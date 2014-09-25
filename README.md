@@ -14,13 +14,13 @@ This is based upon the [Typed Object](https://github.com/dslomov-chromium/typed-
 Records are a new value type that represents an immutable object without a prototype.
 
 ```javascript
-const xObj = #{ x: 1 }; // frozen value type
-const xyObj = #{ ...xObj, y: 2 }; // functional extension
+const xy = #{ x: 1, y: 2 }; // frozen value type
+const xyz = #{ ...xy, z: 3 }; // functional extension
 ```
 
 ### [Tuples](Tuples.md)
 
-Tuples are a new value type that represents an immutable array without a prototype and no .
+Tuples are a new value type that represents an immutable array without a prototype and no holes. It cannot be sparse.
 
 ```javascript
 const xy = #[ x, y ]; // frozen value type
@@ -33,8 +33,8 @@ ImmutableMap is an immutable version of Map. Any mutable operation returns a new
 
 ```javascript
 const a = new ImmutableMap([['x', 1], ['y', 2]]);
-const b = a.set('x', 3);
-a.get('x'); // 1
+const b = a.set('y', 3);
+a.get('y'); // 2
 b.get('y'); // 3
 ```
 

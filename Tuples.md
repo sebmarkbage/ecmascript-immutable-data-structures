@@ -48,3 +48,5 @@ TupleElement:
 Enumeration always proceeds in numeric index order.
 
 `.length` cannot be greater than 2^32 - 1
+
+Tuples are never sparse. They cannot have holes.
