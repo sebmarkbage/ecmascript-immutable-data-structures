@@ -44,3 +44,7 @@ This could be solved in a separate proposal and potentially also includes Typed 
 The type of these objects are all types. This causes an explosion of new types. It doesn't work well with existing code that assume a finite set of types.
 
 Perhaps these types should share a single type such as 'record'?
+
+### Polyfill
+
+It's possible to implement these features in user land on top of Typed Objects. However, to get the proper `===` semantics you're locked to a certain structure layout which puts significants constraints on the performance optimizations that could be made. This is why this needs to be implemented in engines.
