@@ -39,9 +39,9 @@ TupleElement:
 
 ### Comparison Semantics
 
-== and === test value equality.
+`==` and `===` test value equality.
 
-<, >= etc. test value order/equality in enumeration order.
+`<`, `>=` etc. test value order/equality in enumeration order.
 
 ### Notes
 
@@ -50,3 +50,25 @@ Enumeration always proceeds in numeric index order.
 `.length` cannot be greater than 2^32 - 1
 
 Tuples are never sparse. They cannot have holes.
+
+### Polyfill in Terms of Typed Objects
+
+```javascript
+let Tuple = (function() {
+  let typeMap = new Map();
+  return function(array) {
+    let type;
+    if (typeMap.has(array.length)) {
+      type = typeMap.get(array.length);
+    } else {
+      let fields = [{ name: 'length', value: array.length }];
+      for (let i = 0; i < array.length; i++) {
+        fields.push({ name: i, value: any });
+      }
+      type = ValueType(new Symbol('tuple'), fields);
+      typeMap.set(keys, type);
+    }
+    return new type(array);
+  };
+})();
+```
