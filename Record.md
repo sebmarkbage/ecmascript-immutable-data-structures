@@ -51,21 +51,22 @@ Enumeration always proceeds in lexicographic order of property names.
 
 ```javascript
 let Record = (function() {
-  let typeMap = new Map();
-  return function(descriptor) {
-    const keys = new Tuple(Object.keys(descriptor).sort());
-    let type;
-    if (typeMap.has(keys)) {
-      type = typeMap.get(keys);
-    } else {
-      const fields = keys.map(key => ({
-        name: key,
-        value: any
-      }));
-      type = ValueType(new Symbol('record'), fields);
-      typeMap.set(keys, type);
+  let RecordSymbol = new Symbol('record');
+  let RecordConstructor = function(object) {
+    const keys = Object.keys(object).sort();
+    let fields = {};
+    for (let i = 0; i < keys.length; i++) {
+      fields[keys[i]] = any;
     }
-    return new type(descriptor);
+    // Note: Enumeration order of fields is not guaranteed which
+    // makes ValueType a problematic API for this use case.
+    let type = ValueType(RecordSymbol, fields);
+    // Note: We can't replace the ValueType's prototype object to
+    // the shared object, so we have to do the next best thing.
+    Object.setPrototypeOf(type.prototype, RecordPrototype);
+    return new type(object);
   };
+  let RecordPrototype = RecordConstructor.prototype;
+  return RecordConstructor;
 })();
 ```

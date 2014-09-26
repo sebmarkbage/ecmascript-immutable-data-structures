@@ -48,3 +48,7 @@ Perhaps these types should share a single type such as 'record'?
 ### Polyfill
 
 It's possible to implement these features in user land on top of Typed Objects. However, to get the proper `===` semantics you're locked to a certain structure layout which puts significants constraints on the performance optimizations that could be made. This is why this needs to be implemented in engines.
+
+### Performance Considerations
+
+This proposal provides convenient syntax and semantics for immutable data structures and helpers to extend them. The actual implementation details of the extend operations are not covered by this spec but it's expected that engines optimize beyond just copying. E.g. using persistent data structures.

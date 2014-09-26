@@ -55,20 +55,25 @@ Tuples are never sparse. They cannot have holes.
 
 ```javascript
 let Tuple = (function() {
-  let typeMap = new Map();
-  return function(array) {
-    let type;
-    if (typeMap.has(array.length)) {
-      type = typeMap.get(array.length);
-    } else {
-      let fields = [{ name: 'length', value: array.length }];
-      for (let i = 0; i < array.length; i++) {
-        fields.push({ name: i, value: any });
-      }
-      type = ValueType(new Symbol('tuple'), fields);
-      typeMap.set(keys, type);
+  let TupleSymbol = new Symbol('tuple');
+  let TupleConstructor = function(iterable) {
+    let fields = {};
+    let values = {};
+    let i = 0;
+    for (let value of iterable) {
+      i++;
+      fields[i] = any;
+      values[i] = value;
     }
-    return new type(array);
+    // Note: This could probably be replaced with a value array but it's
+    // unclear in the current ValueTypes proposal what that means.
+    let type = ValueType(TupleSymbol, fields);
+    // Note: We can't replace the ValueType's prototype object to
+    // the shared object, so we have to do the next best thing.
+    Object.setPrototypeOf(type.prototype, TuplePrototype);
+    return new type(values);
   };
+  let TuplePrototype = TupleConstructor.prototype;
+  return TupleConstructor;
 })();
 ```
