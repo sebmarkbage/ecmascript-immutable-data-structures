@@ -17,3 +17,7 @@ __Type__
 ```javascript
 typeof new ImmutableMap(); // 'map'
 ```
+
+### Prototype
+
+Value types are not objects and have no prototype. Member expressions are exposed on the [Immutable Map's prototype](ImmutableMap.prototype.md) which is unique for each realm, just like other value types. This prototype is exposed on the realm's global [ImmutableMap.prototype](ImmutableMap.prototype.md).

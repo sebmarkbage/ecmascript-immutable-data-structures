@@ -43,6 +43,12 @@ PropertyDataAssignment:
 
 `<`, `>=` etc. test value order/equality in enumeration order.
 
+### Prototype
+
+Value types are not objects and have no prototype. Member expressions normally access a prototype but the prototype of records is null.
+
+This makes it easier to verify that a record has a particular signature without `hasOwnProperty` checks.
+
 ### Notes
 
 Enumeration always proceeds in lexicographic order of property names.
@@ -61,12 +67,12 @@ let Record = (function() {
     // Note: Enumeration order of fields is not guaranteed which
     // makes ValueType a problematic API for this use case.
     let type = ValueType(RecordSymbol, fields);
-    // Note: We can't replace the ValueType's prototype object to
-    // the shared object, so we have to do the next best thing.
-    Object.setPrototypeOf(type.prototype, RecordPrototype);
+    // Note: We can't replace the ValueType's prototype object
+    // so we have to do the next best thing.
+    Object.setPrototypeOf(type.prototype, null);
     return new type(object);
   };
-  let RecordPrototype = RecordConstructor.prototype;
+  RecordConstructor.prototype = null;
   return RecordConstructor;
 })();
 ```

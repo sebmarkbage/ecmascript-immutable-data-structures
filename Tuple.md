@@ -43,6 +43,10 @@ TupleElement:
 
 `<`, `>=` etc. test value order/equality in enumeration order.
 
+### Prototype
+
+Value types are not objects and have no prototype. Member expressions are exposed on the [Tuple's prototype](Tuple.prototype.md) which is unique for each realm, just like other value types. This prototype is exposed on the realm's global [Tuple.prototype](Tuple.prototype.md).
+
 ### Notes
 
 Enumeration always proceeds in numeric index order.
