@@ -1,5 +1,5 @@
-Immutable Records, Tuples, Maps and Sets for ECMAScript
--------------------------------------------------------
+Immutable Records, Vectors, Maps and Sets for ECMAScript
+--------------------------------------------------------
 
 Immutability and referential transparency has many known benefits and ability for optimization. Several modern JavaScript libraries take advantage of this, and many more functional compile-to-JS languages.
 
@@ -16,9 +16,9 @@ const xy = #{ x: 1, y: 2 }; // frozen value type
 const xyz = #{ ...xy, z: 3 }; // functional extension
 ```
 
-### [Tuple](Tuple.md)
+### [Immutable Vector](ImmutableVector.md)
 
-Tuples are a new value type that represents the value type analogy of an immutable array, without holes. It cannot be sparse.
+ImmutableVector is a new value type that represents the value type analogy of an immutable array, without holes. It cannot be sparse.
 
 ```javascript
 const xy = #[ x, y ]; // frozen value type
