@@ -5,7 +5,7 @@ Records
 
 __Initialization__
 ```javascript
-const a = new Record({ x: 1, y: 2 });
+const a = Record({ x: 1, y: 2 });
 ```
 
 __Initialization Sugar__
@@ -15,7 +15,7 @@ const a = #{ x: 1, y: 2 };
 
 __Extension__
 ```javascript
-const b = new Record(Object.assign({}, a, { z: 3 }));
+const b = Record(Object.assign({}, a, { z: 3 }));
 ```
 
 __Extension Sugar__

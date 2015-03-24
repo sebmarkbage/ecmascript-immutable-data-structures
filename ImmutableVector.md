@@ -5,7 +5,7 @@ Immutable Vector
 
 __Initialization__
 ```javascript
-const a = new ImmutableVector([1, 2]);
+const a = ImmutableVector([1, 2]);
 ```
 
 __Initialization Sugar__

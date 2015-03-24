@@ -30,7 +30,7 @@ const xyz = #[ ...xy, z ]; // functional extension
 ImmutableMap is an immutable version of Map. Any mutable operation returns a new ImmutableMap instead of mutating the existing reference.
 
 ```javascript
-const a = new ImmutableMap([['x', 1], ['y', 2]]);
+const a = ImmutableMap([['x', 1], ['y', 2]]);
 const b = a.set('y', 3);
 a.get('y'); // 2
 b.get('y'); // 3
@@ -41,7 +41,7 @@ b.get('y'); // 3
 ImmutableSet is an immutable version of Set. Any mutable operation returns a new ImmutableSet instead of mutating the existing reference.
 
 ```javascript
-const a = new ImmutableSet([1, 2]);
+const a = ImmutableSet([1, 2]);
 const b = a.add(3);
 a.size; // 2
 b.size; // 3
