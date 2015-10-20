@@ -25,7 +25,7 @@ const b = #{ ...a, z: 3 };
 
 __Type__
 ```javascript
-typeof #[]; // 'record'
+typeof #{}; // 'record'
 ```
 
 ### Syntax
