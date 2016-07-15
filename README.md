@@ -49,7 +49,7 @@ b.size; // 3
 
 ## [Status of this Proposal](https://github.com/tc39/ecma262)
 
-It is my intention to propose this as a Stage 0 proposal to ECMAScript 7.
+This was presented to TC39 in 2015 but the value of having it in the engine is still unproven and this is a large implementation burden for VMs. It effectively doubles the existing data structures. Therefore, we need to gather more arguments for why it needs to be included in the language and how it would be used.
 
 ## [Known Issues](Issues.md)
 
