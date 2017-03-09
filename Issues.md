@@ -27,7 +27,7 @@ var memoizedInput;
 var memoizedResult;
 
 function calculate(input) {
-  if (Object.referenceEquals(memoizedInput, input)) {
+  if (!Object.referenceEquals(memoizedInput, input)) {
     memoizedResult = calculator(input);
     memoizedInput = input;
   }
